@@ -40,6 +40,9 @@ $(document).ready(function(){
 });
 
 $(document).on('click', '#github', function(){
+	/**
+		Chama o script que fará a atualização no GitHub
+	**/
 	console.log('Sincronizando com GitHub');
 	$.post('php/git.php', '', function(retorna){
 		
