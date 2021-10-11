@@ -57,7 +57,7 @@
 
 <div  class="">
 
-	<div id="conteudo" class="hoverable card-panel white">
+	<div id="conteudo" class="hoverable conteudo card-panel white">
 		<div class="container">
 			<div  >Clique em algum Menu a esquerda</div>
 

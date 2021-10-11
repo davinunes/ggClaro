@@ -2,6 +2,27 @@ function moeda(){
         var myAudio = new Audio('moeda.mp3');
 		myAudio.play();
 }
+onResize = function() {
+	if($(window).width() > 992){
+		$("#conteudo").css("padding-left",160);
+	}else{
+		$("#conteudo").css("padding-left",24);
+	}
+}
+
+function serializar(e){
+	var inputs = $(e+" :input");
+	var obj = $.map(inputs, function(n, i){
+		var o = {};
+		o[n.name] = $(n).val();
+		return o;
+	});
+	console.log(obj);
+	return obj;
+}
+
+
+$(window).resize(onResize);
 
 $(document).ready(function(){
 	
@@ -9,6 +30,8 @@ $(document).ready(function(){
 		menuWidth: 50,
 		edge:'left'
 	});
+	
+	onResize();
 	
 	$('.dropdown-trigger').dropdown({
 		inDuration: 300,
@@ -36,9 +59,6 @@ $(document).ready(function(){
 		
 	});
 
-	$('.cpf').keyup(function() {
-		$(this).val(this.value.replace(/\D/g, ''));
-    });
 	
 });
 
@@ -57,4 +77,8 @@ $(document).on('click', '#github', function(){
 		
 	});
 
+});
+
+$(document).on('keyup', '.somenteNumeros', function(){
+	$(this).val(this.value.replace(/\D/g, ''));
 });

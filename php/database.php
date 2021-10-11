@@ -83,6 +83,30 @@ function getUsuarios(){ # Executa um Comando na Conexão
 
 }
 
+function getClientes(){ # Executa um Comando na Conexão
+	$sql .= "select * from `client` c ";
+	
+	$consulta = DBQ($sql);
+	echo '<ul class="collection">';
+	foreach($consulta as $u){
+		
+		echo "	<li class='collection-item avatar'>
+					<i class='material-icons circle'>assignment_ind</i>
+					<span class='title'>$u[ClientName]</span>
+					<p>
+						CPF :: $u[ClientCPF]
+					</p>
+					<span class='secondary-content'>
+						<a class='btn blue editClient' clientid='$u[ClientId]'><i class='material-icons'>edit</i></a>
+						<a class='btn green senhaUser' clientid='$u[ClientId]'><i class='material-icons'>phonelink_lock</i></a>
+
+					</span>
+				</li>";
+	}
+	echo '</ul>';
+
+}
+
 function setUsuarios(){ # Executa um Comando na Conexão
 	$sql .= "select * from `user` u ";
 	
