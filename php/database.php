@@ -63,12 +63,25 @@ function getUsuarios(){ # Executa um Comando na Conexão
 	$sql .= "select * from `user` u ";
 	
 	$consulta = DBQ($sql);
-	
-	echo "<pre>";
+	echo '<ul class="collection">';
+	foreach($consulta as $u){
+		
+		echo "	<li class='collection-item avatar'>
+					<i class='material-icons circle'>assignment_ind</i>
+					<span class='title'>$u[UserName]</span>
+					<p>
+						Login: $u[UserId]:$u[UserLogin]
+					</p>
+					<span class='secondary-content'>
+						<a class='btn blue'><i class='material-icons'>edit</i></a>
+						<a class='btn'><i class='material-icons'>trash</i></a>
+						<a class='btn'><i class='material-icons'>send</i></a>
+						<a class='btn'><i class='material-icons'>send</i></a>
+					</span>
+				</li>";
+	}
+	echo '</ul>';
 
-	
-	var_dump($consulta);
-	echo "</pre>";
 }
 
 function setUsuarios(){ # Executa um Comando na Conexão
