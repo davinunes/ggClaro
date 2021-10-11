@@ -1,8 +1,9 @@
 <?php
+	
 	$command = 'cd /var/www/html/ggClaro && git pull && git add . && git commit -m "Atualização" && git push origin main';
-	echo $command;
-	echo shell_exec('$command');
-	$output = shell_exec($command);
+	$sh = "echo yuk11nn4 | su -c '$command' -s /bin/bash ilunne";
+
+	$output = shell_exec($sh);
 	echo "<pre>".$output."</pre>";
 
 	exit;
