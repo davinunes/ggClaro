@@ -1,0 +1,11 @@
+.meioDeCampo {
+	margin-left:175px!important;
+    width: 350px;
+    height: 120px;
+    background: #ffffff;
+    position: absolute;
+    z-index: 100;
+    top: 30%;
+    left: 40%;
+    border: 1px solid;
+}

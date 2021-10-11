@@ -18,9 +18,9 @@ $(document).ready(function(){
 	$('.menu').click(function() {
 		args = $(this).attr("args");
 		if(typeof args != "undefined"){
-			pagina = $(this).attr("id")+".php"+"?"+args;
+			pagina = "php/"+$(this).attr("id")+".php"+"?"+args;
 		}else{
-			pagina = $(this).attr("id")+".php";
+			pagina = "php/"+$(this).attr("id")+".php";
 		}
 		console.log(pagina);
 		
@@ -36,5 +36,19 @@ $(document).ready(function(){
 	$('.cpf').keyup(function() {
 		$(this).val(this.value.replace(/\D/g, ''));
     });
+	
+});
+
+$(document).on('click', '#github', function(){
+	console.log('Sincronizando com GitHub');
+	$.post('php/git.php', '', function(retorna){
+		
+			M.toast({html: retorna, classes: 'rounded'});
+			setTimeout(function(){
+			 // window.location.reload(true);
+			}, 2500);
+			
+		
+	});
 
 });

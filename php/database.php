@@ -44,6 +44,45 @@ function DBExecute($query){ # Executa um Comando na Conexão
 	return $result;
 }
 
+function DBQ($query){ # Executa um Comando na Conexão
+	$link = DBConnect();
+	$result = mysqli_query($link,$query) or die(mysqli_error($link));
+	
+	DBClose($link);
+	if(!mysqli_num_rows($result)){
+
+	}else{
+		while($retorno = mysqli_fetch_assoc($result)){
+			$dados[] = $retorno;
+		}
+	}
+	return $dados;
+}
+
+function getUsuarios(){ # Executa um Comando na Conexão
+	$sql .= "select * from `user` u ";
+	
+	$consulta = DBQ($sql);
+	
+	echo "<pre>";
+
+	
+	var_dump($consulta);
+	echo "</pre>";
+}
+
+function setUsuarios(){ # Executa um Comando na Conexão
+	$sql .= "select * from `user` u ";
+	
+	$consulta = DBExecute($sql);
+	echo "<pre>";
+	$senha=sha2('yuk11nn4', '256');
+	echo "$senha <br />";
+	
+	var_dump($consulta);
+	echo "</pre>";
+}
+
 
 
 ?>
