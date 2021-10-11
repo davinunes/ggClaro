@@ -5,7 +5,10 @@ function moeda(){
 
 $(document).ready(function(){
 	
-	$('.sidenav').sidenav();
+	$('.sidenav').sidenav({
+		menuWidth: 50,
+		edge:'left'
+	});
 	
 	$('.dropdown-trigger').dropdown({
 		inDuration: 300,

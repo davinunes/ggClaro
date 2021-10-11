@@ -70,13 +70,12 @@ function getUsuarios(){ # Executa um Comando na Conexão
 					<i class='material-icons circle'>assignment_ind</i>
 					<span class='title'>$u[UserName]</span>
 					<p>
-						Login: $u[UserId]:$u[UserLogin]
+						Login :: $u[UserLogin]
 					</p>
 					<span class='secondary-content'>
-						<a class='btn blue'><i class='material-icons'>edit</i></a>
-						<a class='btn'><i class='material-icons'>trash</i></a>
-						<a class='btn'><i class='material-icons'>send</i></a>
-						<a class='btn'><i class='material-icons'>send</i></a>
+						<a class='btn blue editUser' userid='$u[UserId]'><i class='material-icons'>edit</i></a>
+						<a class='btn green senhaUser' userid='$u[UserId]'><i class='material-icons'>phonelink_lock</i></a>
+						<a class='btn red removeUser' userid='$u[UserId]'><i class='material-icons'>delete_forever</i></a>
 					</span>
 				</li>";
 	}

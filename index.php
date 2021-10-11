@@ -37,6 +37,7 @@
 
 <body>
 <header>
+<div>
 <nav class="pink lighten-4">
 <a href="#" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons">menu</i></a>
 <a class="brand-logo center" style="padding-top:8px;"><img width="210px" class="logo" src="logo/md07.png"></a>
@@ -44,7 +45,7 @@
 </header>
 <div class="row">
 <!-- style="background-color:#a34455!important" -->
-<ul id="sidenav-left"  class="pink lighten-3 sidenav sidenav-fixed" style="width: 175px;">
+<ul id="sidenav-left"  class="pink lighten-3 sidenav sidenav-fixed" style="width: 155px;">
   <li><span class="brand-logo"><img width="100%" class="logo" src="logo/0004.png"></a></span></li>
   <li><a class="menu sidenav-close" id="clientes">Clientes</a></li>
   <li><a class="menu sidenav-close" id="servicos">Serviços</a></li>
@@ -66,6 +67,7 @@
 </div>
 
 
+</div>
 </div>
 
 
