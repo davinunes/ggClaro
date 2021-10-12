@@ -43,6 +43,7 @@ echo "<a class='btn teal center modal-trigger' id='addUser' href='#cadastro'>Cad
 	  
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+		<a id="send" metodo="clientAdd" formId="formClient" class="include modal-close waves-effect waves-green btn">CADASTRAR</a>
+		<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     </div>
   </div>

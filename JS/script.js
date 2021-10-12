@@ -72,6 +72,31 @@ $(document).ready(function(){
 	
 });
 
+$(document).on('click', '.include', function(){
+	/**
+		Chama o script que fará a inclusão de um Tipo de dado
+	**/
+	var dados = serializar('#'+$(this).attr("formId")); //Serializa pegando o id do form de um atributo presente no botão
+	dados['metodo'] = $(this).attr("metodo");
+	
+	console.log('Adicionando Cliente');
+	console.log(dados);
+	
+	
+	$.post('php/database.php', dados, function(retorna){
+		
+			M.toast({html: retorna, classes: 'rounded'});
+			setTimeout(function(){
+			 // window.location.reload(true);
+			}, 4000);
+			
+		
+	});
+
+});
+
+
+
 $(document).on('click', '#github', function(){
 	/**
 		Chama o script que fará a atualização no GitHub

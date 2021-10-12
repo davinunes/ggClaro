@@ -119,6 +119,17 @@ function setUsuarios(){ # Executa um Comando na Conexão
 	echo "</pre>";
 }
 
-
+if($_POST[metodo] == 'clientAdd'){
+	
+	$sql .= "INSERT INTO client
+				(ClientName, ClientCPF, ClientZap, ClientImg)
+				VALUES
+				('$_POST[ClientName]', '$_POST[ClientCPF]', '$_POST[ClientZap]', '$_POST[ClientImg]');";
+	if(DBExecute($sql)){
+		echo "ok"; 
+	}else{
+		echo "erro";
+	}
+}
 
 ?>
