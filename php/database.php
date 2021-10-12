@@ -106,6 +106,7 @@ function getClientes(){ # Executa um Comando na Conexão
 					</p>
 					<span class='secondary-content'>
 						<a class='btn blue editClient' ClientId='$u[ClientId]'><i class='material-icons'>edit</i></a>
+						<a class='btn orange getServClient' ClientId='$u[ClientId]'><i class='material-icons'>list</i></a>
 						<a href='#venda'class='modal-trigger btn green sellService' ClientName='$u[ClientName]' ClientId='$u[ClientId]'><i class='material-icons'>add_shopping_cart</i></a>
 
 					</span>
@@ -205,6 +206,34 @@ if($_POST[metodo] == 'serviceAdd'){
 	}else{
 		echo "erro";
 	}
+}
+
+if($_POST[metodo] == 'getServClient'){
+	$sql .= "select f.*, s.ServiceName from `flow` f 
+	left join service s on f.ServiceID = s.ServiceID 
+	where ClientId = '$_POST[ClientId]'";
+	
+	$consulta = DBQ($sql);
+	echo '<table>';
+	foreach($consulta as $u){
+		echo "	<tr>
+					<th>#</th>
+					<th>Item</th>
+					<th>Descrição</th>
+					<th>Valor</th>
+					<th>Vencimento</th>
+				</tr>";
+		
+		echo "	<tr>
+					<td>$u[ServiceId]</td>
+					<td>$u[ServiceName]</td>
+					<td>$u[FlowDesc]</td>
+					<td>R$ $u[FlowPrice]</td>
+					<td>".date( "d-m-Y", strtotime( $u[FlowDate] ) )."</td>
+				</tr>";
+	}
+	echo '</table>';
+
 }
 
 ?>

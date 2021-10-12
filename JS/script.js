@@ -97,6 +97,27 @@ $(document).on('click', '.include', function(){
 
 
 
+$(document).on('click', '.getServClient', function(){
+	/**
+		Chama o script que retornará a lista de produtos por cliente
+	**/		
+			var dados = {};
+			dados["metodo"] = "getServClient";
+			dados["ClientId"] =  $(this).attr("ClientId");
+			
+	$.post('php/database.php', dados, function(retorna){
+		
+			
+			$('#servPorClient').html(retorna);
+			// M.toast({html: retorna, classes: 'rounded'});
+			setTimeout(function(){
+			 // window.location.reload(true);
+			}, 4000);
+			
+		
+	});
+
+});
 $(document).on('click', '#github', function(){
 	/**
 		Chama o script que fará a atualização no GitHub
