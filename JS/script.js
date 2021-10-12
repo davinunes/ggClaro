@@ -11,14 +11,24 @@ onResize = function() {
 }
 
 function serializar(e){
-	var inputs = $(e+" :input");
-	var obj = $.map(inputs, function(n, i){
+	/**
+		Essa função visa serializar os itens de um formulário, fazendo uso de uma pequena gambiarra (não me perguntem como ela funciona!
+	**/
+	var inputs = $(e+" :input"); // pega todos os inputs do formulário
+	var obj = $.map(inputs, function(n, i){ // cria um obj com um indice numérico pra cada par elemento/valor
 		var o = {};
 		o[n.name] = $(n).val();
 		return o;
+
 	});
-	console.log(obj);
-	return obj;
+	var dados = {};
+	$.each(obj, function(key,value){ //Acessa cada elemento do novo objeto
+		$.each(value, function(a,b){// Insere cada item no nomo array da forma correta
+			dados[a] = b;
+		});
+	});
+	console.log(dados);
+	return dados;
 }
 
 
