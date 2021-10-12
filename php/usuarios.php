@@ -1,6 +1,6 @@
 <?php
 include "database.php";
-
+validar();
 getUsuarios();
 
 
@@ -30,10 +30,6 @@ echo " <a class='btn red right' id='github'>GitHub</a>";
         <div class="input-field col s12 m6">
           <input id="UserPassword" name="UserPassword" placeholder="Senha" type="password" class="validate ">
           <label for="UserPassword" class="active">Senha</label>
-        </div>
-		<div class="input-field col s12 m6">
-          <input id="UserPasswordCheck" name="UserPasswordCheck" placeholder="Repita a Senha" type="password" class="validate ">
-          <label for="UserPasswordCheck" class="active">Confirmar a Senha</label>
         </div>
         <div class="input-field col s12 m6 hide">
           <input id="UserId" name="UserId" placeholder="0" type="text" class="validate somenteNumeros" disabled>

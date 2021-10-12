@@ -114,6 +114,42 @@ $(document).on('click', '#github', function(){
 
 });
 
+$(document).on('click', '.sellService', function(){
+  $("#fClientId").val($(this).attr("ClientId"));
+  $("#fClientName").val($(this).attr("ClientName"));
+});
+
 $(document).on('keyup', '.somenteNumeros', function(){
 	$(this).val(this.value.replace(/\D/g, ''));
+});
+
+$("#UserPassword").on("focusout", function (e) {
+    if ($(this).val() != $("#UserPasswordCheck").val()) {
+        $("#UserPasswordCheck").removeClass("valid").addClass("invalid");
+    } else {
+        $("#UserPasswordCheck").removeClass("invalid").addClass("valid");
+    }
+});
+
+$("#UserPasswordCheck").on("keyup", function (e) {
+    if ($("#UserPassword").val() != $(this).val()) {
+        $(this).removeClass("valid").addClass("invalid");
+    } else {
+        $(this).removeClass("invalid").addClass("valid");
+    }
+});
+
+$(document).on('change', '#upload', function(){
+	console.log("Upload:");
+	const file = $(this)[0].files[0];
+	console.log(file);
+	const ctx = new FileReader();
+	console.log(ctx);
+	ctx.onloadend = function(){
+		console.log("No Fim");
+		console.log(ctx.result);
+		$("#img").attr("src",ctx.result);
+		$("#ServiceImage").val(ctx.result);
+	}
+	ctx.readAsDataURL(file);
 });

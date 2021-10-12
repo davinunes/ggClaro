@@ -3,6 +3,12 @@
 		// Define primeiro e ultimo dia deste mês
 		$dti = date("Y-m-01");
 		$dtf = date("Y-m-t");
+		
+		include "php/database.php";
+		session_start();
+		validar();
+		
+		// var_dump($_SESSION[UserId]);
 ?>
 <html lang="pt-br">
 
@@ -51,6 +57,7 @@
   <li><a class="menu sidenav-close" id="servicos">Serviços</a></li>
   <li><div class="divider"></div></li>
   <li><a class="menu sidenav-close" id="usuarios">Usuarios</a></li>
+  <li><a class=" sidenav-close" href="php/logout.php">Sair</a></li>
 </ul>
 
 
@@ -59,7 +66,13 @@
 
 	<div id="conteudo" class="hoverable conteudo card-panel white">
 		<div class="container">
-			<div>Oláaaaa!</div>
+			<div>
+<?php			
+			
+		echo "Olá $_SESSION[UserName]";	
+			
+?>		
+			</div>
 
 		</div>
 	</div>
