@@ -32,7 +32,7 @@ echo "<a class='btn teal center modal-trigger' id='addUser' href='#cadastro'>Cad
         </div>
         <div class="input-field col s12 m6">
           <input id="ClientId" name="ClientId" placeholder="0" type="text" class="validate somenteNumeros" disabled>
-          <label for="ClientZap" class="active">Id</label>
+          <label for="ClientId" class="active">Id</label>
         </div>
       </div>
 
