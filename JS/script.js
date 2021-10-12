@@ -82,7 +82,7 @@ $(document).on('click', '#github', function(){
 			M.toast({html: retorna, classes: 'rounded'});
 			setTimeout(function(){
 			 // window.location.reload(true);
-			}, 2500);
+			}, 4000);
 			
 		
 	});
