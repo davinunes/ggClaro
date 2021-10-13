@@ -31,7 +31,6 @@ function serializar(e){
 	return dados;
 }
 
-
 $(window).resize(onResize);
 
 $(document).ready(function(){
@@ -140,6 +139,22 @@ $(document).on('click', '.sellService', function(){
   $("#fClientName").val($(this).attr("ClientName"));
 });
 
+$(document).on('click', '.editGlobal', function(){
+  let formulario = $(this).attr('form');
+  let dados = {};
+  dados['metodo'] = "getServiceJSON";
+  dados['ServiceId'] = $(this).attr('ServiceId');
+  console.log(formulario);
+  	$.post('php/database.php', dados, function(retorna){
+		// M.toast({html: retorna, classes: 'rounded'});
+		console.log(retorna);
+		$.each(retorna, function(key,value){
+			console.log(key);
+			$("#"+key).val(value);
+		});
+	},"json");
+});
+
 $(document).on('keyup', '.somenteNumeros', function(){
 	$(this).val(this.value.replace(/\D/g, ''));
 });
@@ -160,6 +175,11 @@ $("#UserPasswordCheck").on("keyup", function (e) {
     }
 });
 
+$(document).on('change', '#ServiceImage', function(){
+	console.log("Deveria escrever a nova imagem");
+	$("#img").attr("src",$(this).val());
+});
+
 $(document).on('change', '#upload', function(){
 	console.log("Upload:");
 	const file = $(this)[0].files[0];
@@ -169,7 +189,7 @@ $(document).on('change', '#upload', function(){
 	ctx.onloadend = function(){
 		console.log("No Fim");
 		console.log(ctx.result);
-		$("#img").attr("src",ctx.result);
+		// $("#img").attr("src",ctx.result);
 		$("#ServiceImage").val(ctx.result);
 	}
 	ctx.readAsDataURL(file);

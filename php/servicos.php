@@ -52,9 +52,9 @@ echo " <a class='btn teal center modal-trigger' href='#cadastro' id='addService'
           <input id="ServiceId" name="ServiceId" placeholder="0" type="text" class="validate somenteNumeros" disabled>
           <label for="ServiceId" class="active">Id</label>
         </div>
-		<div class="input-field col s12 m6 hide">
-          <input id="ServiceImage" name="ServiceImage" placeholder="0" type="text" class="validate somenteNumeros" disabled>
-          <label for="ServiceImage" class="active">Id</label>
+		<div class="input-field col s12 m6 ">
+          <input id="ServiceImage" name="ServiceImage" placeholder=" " type="text" >
+          <label for="ServiceImage" class="active">Imagem Codificada</label>
         </div>
       </div>
 

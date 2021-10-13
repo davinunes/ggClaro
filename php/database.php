@@ -127,6 +127,8 @@ function getServiceList(){ # Executa um Comando na Conexão
 
 }
 
+
+
 function getService(){ # Executa um Comando na Conexão
 	$sql .= "select * from `service` ";
 	
@@ -134,7 +136,7 @@ function getService(){ # Executa um Comando na Conexão
 	echo '<ul class="collection">';
 	foreach($consulta as $u){
 		$img = !$u[ServiceImage] ? "<i class='material-icons circle'>assignment_ind</i>" : "<img src='$u[ServiceImage]' class='circle'>";
-		
+
 		echo "	<li class='collection-item avatar'>
 					$img
 					<span class='title '>$u[ServiceName]</span>
@@ -145,7 +147,11 @@ function getService(){ # Executa um Comando na Conexão
 						Preço de referência :: R$ $u[ServiceDefVal] (O preço final será confirmado após avaliação do cliente)
 					</p>
 					<span class='secondary-content'>
-						<a class='btn blue editService' ServiceId='$u[ServiceId]'><i class='material-icons'>edit</i></a>
+						<a href='#cadastro' class='modal-trigger btn blue edit editGlobal'	form='#formService'	ServiceId='$u[ServiceId]'>
+
+							<i class='material-icons'>edit</i>
+						</a>
+						
 						<a class='btn red delService' ServiceId='$u[ServiceId]'><i class='material-icons'>delete_forever</i></a>
 
 					</span>
@@ -234,6 +240,21 @@ if($_POST[metodo] == 'getServClient'){
 	}
 	echo '</table>';
 
+}
+
+if($_POST[metodo] == 'getServiceJSON'){
+
+	$sql .= "select * from `service` where ServiceId = '$_POST[ServiceId]' ";
+	$consulta = DBQ($sql);
+	foreach($consulta as $u){
+		$j[ServiceId]		=$u[ServiceId];
+		$j[ServiceName]		=$u[ServiceName];
+		$j[ServiceDefVal]	=$u[ServiceDefVal];
+		$j[ServiceDesc]		=$u[ServiceDesc];
+		$j[ServiceImage]	=$u[ServiceImage];	
+	}
+	
+	echo json_encode($j);
 }
 
 ?>
