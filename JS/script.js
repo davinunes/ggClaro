@@ -87,7 +87,7 @@ $(document).on('click', '.include', function(){
 			M.toast({html: retorna, classes: 'rounded'});
 			setTimeout(function(){
 			 // window.location.reload(true);
-			}, 4000);
+			}, 2000);
 			
 		
 	});
@@ -134,6 +134,12 @@ $(document).on('click', '#github', function(){
 
 });
 
+$(document).on('click', '.new', function(){
+	let f = $(this).attr('form');
+	$(f)[0].reset();
+	$("#img").attr("src","");
+});
+
 $(document).on('click', '.sellService', function(){
   $("#fClientId").val($(this).attr("ClientId"));
   $("#fClientName").val($(this).attr("ClientName"));
@@ -151,7 +157,10 @@ $(document).on('click', '.editGlobal', function(){
 		$.each(retorna, function(key,value){
 			console.log(key);
 			$("#"+key).val(value);
+			$("#"+key).trigger("change");
 		});
+		$("#send").attr("metodo",'serviceSet');
+		$("#send").text("Atualizar");
 	},"json");
 });
 
@@ -159,13 +168,6 @@ $(document).on('keyup', '.somenteNumeros', function(){
 	$(this).val(this.value.replace(/\D/g, ''));
 });
 
-$("#UserPassword").on("focusout", function (e) {
-    if ($(this).val() != $("#UserPasswordCheck").val()) {
-        $("#UserPasswordCheck").removeClass("valid").addClass("invalid");
-    } else {
-        $("#UserPasswordCheck").removeClass("invalid").addClass("valid");
-    }
-});
 
 $("#UserPasswordCheck").on("keyup", function (e) {
     if ($("#UserPassword").val() != $(this).val()) {
@@ -191,6 +193,7 @@ $(document).on('change', '#upload', function(){
 		console.log(ctx.result);
 		// $("#img").attr("src",ctx.result);
 		$("#ServiceImage").val(ctx.result);
+		$("#ServiceImage").trigger("change");
 	}
 	ctx.readAsDataURL(file);
 });

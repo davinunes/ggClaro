@@ -4,7 +4,7 @@ validar();
 getService();
 
 
-echo " <a class='btn teal center modal-trigger' href='#cadastro' id='addService'>Criar novo Serviço</a>";
+echo " <a class='new btn teal center modal-trigger' href='#cadastro' form='#formService' id='addService'>Criar novo Serviço</a>";
 
 
 ?>
@@ -52,8 +52,8 @@ echo " <a class='btn teal center modal-trigger' href='#cadastro' id='addService'
           <input id="ServiceId" name="ServiceId" placeholder="0" type="text" class="validate somenteNumeros" disabled>
           <label for="ServiceId" class="active">Id</label>
         </div>
-		<div class="input-field col s12 m6 ">
-          <input id="ServiceImage" name="ServiceImage" placeholder=" " type="text" >
+		<div class="input-field col s12 m6 hide">
+          <input id="ServiceImage" name="ServiceImage" placeholder=" " type="text" disabled>
           <label for="ServiceImage" class="active">Imagem Codificada</label>
         </div>
       </div>
