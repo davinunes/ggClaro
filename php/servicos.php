@@ -35,7 +35,7 @@ echo " <a
 		<div class="row">
 		<div class="file-field input-field s12">
 			  <div class="btn">
-				<span>ilustração</span>
+				<span>Imagem</span>
 				<input type='file' id='upload' name='upload' />
 			  </div>
 			  
@@ -45,10 +45,10 @@ echo " <a
 		</div>
 		</div>
 		<div class="row">
-		<div class="input-field col s4 ">
-			<img id='img' style='width:100px;' />
+		<div class="input-field col s12 m6">
+			<img id='img' style='width:70px;' />
 		</div>
-        <div class="input-field col s8 ">
+        <div class="input-field col s12 m6 ">
           <textarea id="ServiceDesc" name="ServiceDesc" placeholder="Texto sobre o item, produto ou serviço." type="textarea" class="materialize-textarea "></textarea>
           <label for="ServiceDesc" class="active">Descrição do Item</label>
         </div>

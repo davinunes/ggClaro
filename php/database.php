@@ -144,7 +144,7 @@ function getService(){ # Executa um Comando na Conexão
 						$u[ServiceDesc]
 					</p>
 					<p>
-						Preço de referência :: R$ $u[ServiceDefVal] (O preço final será confirmado após avaliação do cliente)
+						Preço de referência :: R$ $u[ServiceDefVal] <br />(O preço final será confirmado após avaliação do cliente)
 					</p>
 					<span class='secondary-content'>
 						<a href='#cadastro' class='modal-trigger btn blue edit editGlobal'	form='#formService'	ServiceId='$u[ServiceId]'>
