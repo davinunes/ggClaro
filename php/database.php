@@ -214,6 +214,23 @@ if($_POST[metodo] == 'serviceAdd'){
 	}
 }
 
+if($_POST[metodo] == 'serviceSet'){
+	
+	$sql .= "UPDATE service
+				SET
+					ServiceName = '$_POST[ServiceName]', 
+					ServiceDesc = '$_POST[ServiceDesc]', 
+					ServiceDefVal = '$_POST[ServiceDefVal]', 
+					ServiceImage = '$_POST[ServiceImage]'
+				WHERE 
+					ServiceId = $_POST[ServiceId]";
+	if(DBExecute($sql)){
+		echo "ok"; 
+	}else{
+		echo "erro";
+	}
+}
+
 if($_POST[metodo] == 'getServClient'){
 	$sql .= "select f.*, s.ServiceName from `flow` f 
 	left join service s on f.ServiceID = s.ServiceID 

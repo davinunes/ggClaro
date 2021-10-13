@@ -77,16 +77,16 @@ $(document).on('click', '.include', function(){
 	**/
 	var dados = serializar('#'+$(this).attr("formId")); //Serializa pegando o id do form de um atributo presente no botão
 	dados['metodo'] = $(this).attr("metodo");
-	
+	dados['index'] = $(this).attr("index");
 	console.log('Adicionando Cliente');
 	console.log(dados);
 	
 	
-	$.post('php/database.php', dados, function(retorna){
+	$.post('php/database.php', dados, function(retorna, index){
 		
 			M.toast({html: retorna, classes: 'rounded'});
 			setTimeout(function(){
-			 // window.location.reload(true);
+			 $(dados['index']).click();
 			}, 2000);
 			
 		
