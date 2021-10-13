@@ -238,14 +238,16 @@ if($_POST[metodo] == 'getServClient'){
 	
 	$consulta = DBQ($sql);
 	echo '<table>';
-	foreach($consulta as $u){
-		echo "	<tr>
+			echo "	<tr>
 					<th>#</th>
 					<th>Item</th>
 					<th>Descrição</th>
 					<th>Valor</th>
 					<th>Vencimento</th>
+					<th>Pago?</th>
 				</tr>";
+	foreach($consulta as $u){
+
 		
 		echo "	<tr>
 					<td>$u[ServiceId]</td>
