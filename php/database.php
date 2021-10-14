@@ -359,12 +359,12 @@ if($_POST[metodo] == 'getServClient'){
 					<td>".date( "d-m-Y", strtotime( $u[FlowDate] ) )."</td>
 				</tr>";
 	}
-	echo '<tfoot>
+	echo "<tfoot>
 		<th>Total em aberto</th><td>$totalD</td>
 		<th>Total fechado</th><td>$totalR</td>
 		</tfoot>
 		    </tbody>
-			</table>';
+			</table>";
 
 }
 
