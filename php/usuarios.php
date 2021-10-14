@@ -31,8 +31,8 @@ echo " <a class='btn red right' id='github'>GitHub</a>";
           <input id="UserPassword" name="UserPassword" placeholder="Senha" type="password" class="validate ">
           <label for="UserPassword" class="active">Senha</label>
         </div>
-        <div class="input-field col s12 m6 hide">
-          <input id="UserId" name="UserId" placeholder="0" type="text" class="validate somenteNumeros" disabled>
+        <div class="input-field col s12 m6 ">
+          <input id="UserId" name="UserId" placeholder="0" type="text" class="validate " disabled>
           <label for="UserId" class="active">Id</label>
         </div>
       </div>
@@ -45,7 +45,14 @@ echo " <a class='btn red right' id='github'>GitHub</a>";
 	  
     </div>
     <div class="modal-footer">
-		<a id="send" metodo="userAdd" formId="formUser" class="include modal-close waves-effect waves-green btn">CADASTRAR</a>
+		<a 
+			id="send" 
+			index='#usuarios'
+			metodo="userAdd" 
+			formId="formUser" 
+			metododef="userAdd"
+			class="include modal-close waves-effect waves-green btn"
+		>CADASTRAR</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     </div>
   </div>

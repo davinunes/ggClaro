@@ -44,7 +44,14 @@ echo "<a class='btn teal center modal-trigger' id='addUser' href='#cadastro'>Cad
 	  
     </div>
     <div class="modal-footer">
-		<a id="send" metodo="clientAdd" formId="formClient" class="include modal-close waves-effect waves-green btn">CADASTRAR</a>
+		<a 
+			id="send" 
+			index='#clientes'
+			metodo="clientAdd" 
+			metododef="clientAdd"
+			formId="formClient" 
+			class="include modal-close waves-effect waves-green btn"
+		>CADASTRAR</a>
 		<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     </div>
   </div>
@@ -104,7 +111,13 @@ echo "<a class='btn teal center modal-trigger' id='addUser' href='#cadastro'>Cad
 	  
     </div>
     <div class="modal-footer">
-		<a id="send" metodo="flowAdd" formId="formVenda" class="include modal-close waves-effect waves-green btn">Anotar</a>
+		<a 
+			id="sendFlow" 
+			metodo="flowAdd" 
+			metododef="flowAdd"
+			formId="formVenda" 
+			class="include modal-close waves-effect waves-green btn"
+		>Anotar</a>
 		<a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     </div>
   </div>

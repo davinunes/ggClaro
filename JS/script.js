@@ -136,6 +136,8 @@ $(document).on('click', '#github', function(){
 
 $(document).on('click', '.new', function(){
 	let f = $(this).attr('form');
+	$("#send").text("CADASTRAR");
+	$("#send").attr('metodo',$("#send").attr('metododef'));
 	$(f)[0].reset();
 	$("#img").attr("src","");
 });
@@ -146,10 +148,22 @@ $(document).on('click', '.sellService', function(){
 });
 
 $(document).on('click', '.editGlobal', function(){
+	/**
+		Tem que ter esses atributos no link que carrega a classe editGlobal:
+		metodoGet='getServiceJSON'
+		metodoSet='serviceSet'
+		chave='ServiceId'
+	
+	**/
   let formulario = $(this).attr('form');
-  let dados = {};
-  dados['metodo'] = "getServiceJSON";
-  dados['ServiceId'] = $(this).attr('ServiceId');
+  let metodo = $(this).attr('metodoGet');
+  let chave = $(this).attr('chave');
+  
+  var dados = {};
+  dados['metodo'] = metodo;
+  dados[chave] = $(this).attr(chave);
+  dados['mset'] = $(this).attr('metodoSet');;
+  
   console.log(formulario);
   	$.post('php/database.php', dados, function(retorna){
 		// M.toast({html: retorna, classes: 'rounded'});
@@ -159,7 +173,7 @@ $(document).on('click', '.editGlobal', function(){
 			$("#"+key).val(value);
 			$("#"+key).trigger("change");
 		});
-		$("#send").attr("metodo",'serviceSet');
+		$("#send").attr("metodo",dados.mset);
 		$("#send").text("Atualizar");
 	},"json");
 });

@@ -71,7 +71,14 @@ echo " <a
 	  
     </div>
     <div class="modal-footer">
-		<a id="send" index='#servicos' metodo="serviceAdd" formId="formService" class="include modal-close waves-effect waves-green btn">CADASTRAR</a>
+		<a 
+			id="send" 
+			index='#servicos' 
+			metodo="serviceAdd"
+			metododef="serviceAdd"
+			formId="formService" 
+			class="include modal-close waves-effect waves-green btn"
+		>CADASTRAR</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     </div>
   </div>

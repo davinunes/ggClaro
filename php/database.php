@@ -81,7 +81,16 @@ function getUsuarios(){ # Executa um Comando na Conexão
 						Login :: $u[UserLogin]
 					</p>
 					<span class='secondary-content'>
-						<a class='btn blue editUser' UserId='$u[UserId]'><i class='material-icons'>edit</i></a>
+						<a 
+							href='#cadastro' 
+							class='modal-trigger btn blue editGlobal' 
+							UserId='$u[UserId]'
+							metodoGet='getUserJSON'
+							metodoSet='userSet'
+							chave='UserId'
+							form='#formUser'
+
+						><i class='material-icons'>edit</i></a>
 						<a class='btn green senhaUser' UserId='$u[UserId]'><i class='material-icons'>phonelink_lock</i></a>
 						<a class='btn red removeUser' UserId='$u[UserId]'><i class='material-icons'>delete_forever</i></a>
 					</span>
@@ -105,7 +114,17 @@ function getClientes(){ # Executa um Comando na Conexão
 						CPF :: $u[ClientCPF]
 					</p>
 					<span class='secondary-content'>
-						<a class='btn blue editClient' ClientId='$u[ClientId]'><i class='material-icons'>edit</i></a>
+						<a 
+							href='#cadastro'
+							class='modal-trigger btn blue editGlobal' 
+							ClientId='$u[ClientId]'
+							metodoGet='getClientJSON'
+							metodoSet='clientSet'
+							chave='ClientId'
+							form='#formClient'
+							
+						
+						><i class='material-icons'>edit</i></a>
 						<a class='btn orange getServClient' ClientId='$u[ClientId]'><i class='material-icons'>list</i></a>
 						<a href='#venda'class='modal-trigger btn green sellService' ClientName='$u[ClientName]' ClientId='$u[ClientId]'><i class='material-icons'>add_shopping_cart</i></a>
 
@@ -127,8 +146,6 @@ function getServiceList(){ # Executa um Comando na Conexão
 
 }
 
-
-
 function getService(){ # Executa um Comando na Conexão
 	$sql .= "select * from `service` ";
 	
@@ -147,7 +164,16 @@ function getService(){ # Executa um Comando na Conexão
 						Preço de referência :: R$ $u[ServiceDefVal] <br />(O preço final será confirmado após avaliação do cliente)
 					</p>
 					<span class='secondary-content'>
-						<a href='#cadastro' class='modal-trigger btn blue edit editGlobal'	form='#formService'	ServiceId='$u[ServiceId]'>
+						<a 
+							href='#cadastro' 
+							class='modal-trigger btn blue edit editGlobal'	
+							form='#formService'	
+							ServiceId='$u[ServiceId]'
+							metodoGet='getServiceJSON'
+							metodoSet='serviceSet'
+							chave='ServiceId'
+							
+						>
 
 							<i class='material-icons'>edit</i>
 						</a>
@@ -174,6 +200,25 @@ if($_POST[metodo] == 'userAdd'){ # Executa um Comando na Conexão
 	}
 }
 
+if($_POST[metodo] == 'userSet'){ # Executa um Comando na Conexão
+	$sql .= "	UPDATE `user` 
+					SET 
+						UserName = '$_POST[UserName]', ";
+	if($_POST[UserPassword] != ""){
+		$sql .= "		UserPassword = sha2('$_POST[UserPassword]', '256'), ";
+	}
+	$sql .= "
+						UserLogin = '$_POST[UserLogin]'
+					WHERE 
+						UserId = $_POST[UserId]";
+	// echo $sql;
+	if(DBExecute($sql)){
+		echo "ok"; 
+	}else{
+		echo "erro";
+	}
+}
+
 if($_POST[metodo] == 'clientAdd'){
 	
 	$sql .= "INSERT INTO client
@@ -186,7 +231,6 @@ if($_POST[metodo] == 'clientAdd'){
 		echo "erro";
 	}
 }
-
 
 if($_POST[metodo] == 'flowAdd'){
 	
@@ -224,6 +268,22 @@ if($_POST[metodo] == 'serviceSet'){
 					ServiceImage = '$_POST[ServiceImage]'
 				WHERE 
 					ServiceId = $_POST[ServiceId]";
+	if(DBExecute($sql)){
+		echo "ok"; 
+	}else{
+		echo "erro";
+	}
+}
+if($_POST[metodo] == 'clientSet'){
+	
+	$sql .= "UPDATE client
+				SET
+					ClientName = '$_POST[ClientName]', 
+					ClientCPF = '$_POST[ClientCPF]', 
+					ClientZap = '$_POST[ClientZap]', 
+					ClientImg = '$_POST[ClientImg]'
+				WHERE 
+					ClientId = $_POST[ClientId]";
 	if(DBExecute($sql)){
 		echo "ok"; 
 	}else{
@@ -271,6 +331,32 @@ if($_POST[metodo] == 'getServiceJSON'){
 		$j[ServiceDefVal]	=$u[ServiceDefVal];
 		$j[ServiceDesc]		=$u[ServiceDesc];
 		$j[ServiceImage]	=$u[ServiceImage];	
+	}
+	
+	echo json_encode($j);
+}
+if($_POST[metodo] == 'getUserJSON'){
+	
+	$sql .= "select * from `user` u where UserId = '$_POST[UserId]'";
+	$consulta = DBQ($sql);
+	foreach($consulta as $u){
+		$j[UserId]		=$u[UserId];
+		$j[UserName]	=$u[UserName];
+		$j[UserLogin]	=$u[UserLogin];
+	}
+	
+	echo json_encode($j);
+}
+if($_POST[metodo] == 'getClientJSON'){
+	
+	$sql .= "select * from `client` u where ClientId = '$_POST[ClientId]'";
+	$consulta = DBQ($sql);
+	foreach($consulta as $u){
+		$j[ClientId]		=$u[ClientId];
+		$j[ClientName]	=$u[ClientName];
+		$j[ClientCPF]	=$u[ClientCPF];
+		$j[ClientZap]	=$u[ClientZap];
+		$j[ClientImg]	=$u[ClientImg];
 	}
 	
 	echo json_encode($j);
