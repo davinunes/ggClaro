@@ -347,16 +347,21 @@ if($_POST[metodo] == 'getServClient'){
 		// Soma o total de receitas e também o total de despesas
 		if($u[FlowIn] == '0'){
 			$totalD += $u[FlowPrice];
+			$icone = '<i class="material-icons">done_all</i>';
+			$cor = 'green';
 		}else{
 			$totalR += $u[FlowPrice];
+			$icone = '';
+			$cor = '';
 		}
 		
-		echo "	<tr>
+		echo "	<tr class='$cor'>
 					<td>$u[ServiceId]</td>
 					<td>$u[ServiceName]</td>
 					<td>$u[FlowDesc]</td>
 					<td>R$ $u[FlowPrice]</td>
 					<td>".date( "d-m-Y", strtotime( $u[FlowDate] ) )."</td>
+					<td>$icone</td>
 				</tr>";
 	}
 	echo "<tfoot>
