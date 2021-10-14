@@ -345,12 +345,12 @@ if($_POST[metodo] == 'getServClient'){
 	foreach($consulta as $u){
 		
 		// Soma o total de receitas e também o total de despesas
-		if($u[FlowIn] == '0'){
-			$totalD += $u[FlowPrice];
-			$icone = '<i class="material-icons">done_all</i>';
-			$cor = 'green';
-		}else{
+		if($u[FlowIn] == '1'){
 			$totalR += $u[FlowPrice];
+			$icone = '<i class="material-icons">done_all</i>';
+			$cor = 'teal lighten-5';
+		}else{
+			$totalD += $u[FlowPrice];
 			$icone = '';
 			$cor = '';
 		}
