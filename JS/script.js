@@ -43,7 +43,6 @@ $(document).ready(function(){
 		edge:'left'
 	});
 	
-	$('.circle').css('object-fit', 'cover');
 	
 	onResize();
 	
@@ -68,6 +67,7 @@ $(document).ready(function(){
 			$("#conteudo").html(retorna);
 			// $('select').formSelect();
 			$('.modal').modal();
+			$('.circle').css('object-fit', 'cover'); //Ajusta Imagem dentro do avatar
 		});
 		
 		
