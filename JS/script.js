@@ -43,7 +43,7 @@ $(document).ready(function(){
 		edge:'left'
 	});
 	
-	$('.avatar').css('object-fit', 'cover');
+	$('.circle').css('object-fit', 'cover');
 	
 	onResize();
 	
