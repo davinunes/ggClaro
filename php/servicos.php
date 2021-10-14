@@ -36,7 +36,7 @@ echo " <a
 		<div class="file-field input-field s12">
 			  <div class="btn">
 				<span>Imagem</span>
-				<input type='file' id='upload' name='upload' />
+				<input type='file' id='upload' name='upload' tag='#ServiceImage'/>
 			  </div>
 			  
 			  <div class="file-path-wrapper">
@@ -58,7 +58,7 @@ echo " <a
           <label for="ServiceId" class="active">Id</label>
         </div>
 		<div class="input-field col s12 m6 hide">
-          <input id="ServiceImage" name="ServiceImage" placeholder=" " type="text" disabled>
+          <input class='upimg' id="ServiceImage" name="ServiceImage" placeholder=" " type="text" disabled>
           <label for="ServiceImage" class="active">Imagem Codificada</label>
         </div>
       </div>

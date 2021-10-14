@@ -191,7 +191,7 @@ $("#UserPasswordCheck").on("keyup", function (e) {
     }
 });
 
-$(document).on('change', '#ServiceImage', function(){
+$(document).on('change', '.upimg', function(){
 	console.log("Deveria escrever a nova imagem");
 	$("#img").attr("src",$(this).val());
 });
@@ -200,14 +200,16 @@ $(document).on('change', '#upload', function(){
 	console.log("Upload:");
 	const file = $(this)[0].files[0];
 	console.log(file);
+	let tag = $(this).attr('tag');
 	const ctx = new FileReader();
 	console.log(ctx);
 	ctx.onloadend = function(){
 		console.log("No Fim");
 		console.log(ctx.result);
 		// $("#img").attr("src",ctx.result);
-		$("#ServiceImage").val(ctx.result);
-		$("#ServiceImage").trigger("change");
+		$(tag).val(ctx.result);
+		$(tag).trigger("change");
 	}
 	ctx.readAsDataURL(file);
 });
+

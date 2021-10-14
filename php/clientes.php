@@ -31,9 +31,26 @@ echo "<a class='btn teal center modal-trigger' id='addUser' href='#cadastro'>Cad
           <input id="ClientZap" name="ClientZap" placeholder="5561999999999" type="text" class="validate somenteNumeros">
           <label for="ClientZap" class="active">WhatsApp no formato: 5561999999999</label>
         </div>
-        <div class="input-field col s12 m6">
+        <div class="input-field col s12 m6 hide">
           <input id="ClientId" name="ClientId" placeholder="0" type="text" class="validate somenteNumeros" disabled>
-          <label for="ClientId" class="active">Id</label>
+          <label for="ClientId" class="active">Id Cliente</label>
+        </div>
+		<div class="file-field input-field s12 m6">
+			  <div class="btn">
+				<span>Foto</span>
+				<input type='file' id='upload' class='upload' name='upload' tag='#ClientImg'/>
+			  </div>
+			  
+			  <div class="file-path-wrapper">
+				<input name="upload2" id="upload2" class="file-path validate" type="text">
+			  </div>
+		</div>
+		<div class="input-field col s12 m6">
+			<img id='img' style='width:70px;' />
+		</div>
+		<div class="input-field col s12 m6 hide">
+          <input class='upimg'  id="ClientImg" name="ClientImg" placeholder=" " type="text" disabled>
+          <label for="ClientImg" class="active">Imagem Codificada</label>
         </div>
       </div>
 

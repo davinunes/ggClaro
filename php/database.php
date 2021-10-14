@@ -106,9 +106,9 @@ function getClientes(){ # Executa um Comando na Conexão
 	$consulta = DBQ($sql);
 	echo '<ul class="collection">';
 	foreach($consulta as $u){
-		
+		$img = !$u[ClientImg] ? "<i class='material-icons circle'>assignment_ind</i>" : "<img src='$u[ClientImg]' class='circle'>";
 		echo "	<li class='collection-item avatar'>
-					<i class='material-icons circle'>assignment_ind</i>
+					$img
 					<span class='title'>$u[ClientName]</span>
 					<p>
 						CPF :: $u[ClientCPF]
