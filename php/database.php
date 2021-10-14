@@ -339,7 +339,7 @@ if($_POST[metodo] == 'getServClient'){
 					<th>Descrição</th>
 					<th>Valor</th>
 					<th>Vencimento</th>
-					<th>Pago?</th>
+					<th>Pago</th>
 				</tr></thead>
 				<tbody>";
 	foreach($consulta as $u){
