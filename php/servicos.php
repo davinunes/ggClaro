@@ -36,7 +36,7 @@ echo " <a
 		<div class="file-field input-field s12">
 			  <div class="btn">
 				<span>Imagem</span>
-				<input type='file' id='upload' name='upload' tag='#ServiceImage'/>
+				<input type='file' accept="image/*" id='upload' name='upload' tag='#ServiceImage'/>
 			  </div>
 			  
 			  <div class="file-path-wrapper">

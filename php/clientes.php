@@ -38,7 +38,7 @@ echo "<a class='btn teal center modal-trigger' id='addUser' href='#cadastro'>Cad
 		<div class="file-field input-field s12 m6">
 			  <div class="btn">
 				<span>Foto</span>
-				<input type='file' id='upload' class='upload' name='upload' tag='#ClientImg'/>
+				<input type='file' accept="image/*" id='upload' class='upload' name='upload' tag='#ClientImg'/>
 			  </div>
 			  
 			  <div class="file-path-wrapper">
