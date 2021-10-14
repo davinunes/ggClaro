@@ -319,22 +319,37 @@ if($_POST[metodo] == 'clientSet'){
 }
 
 if($_POST[metodo] == 'getServClient'){
+	
+	/**
+		Escreve uma tabela, com os serviços na lançados para determinado cliente
+	**/
+	
 	$sql .= "select f.*, s.ServiceName from `flow` f 
 	left join service s on f.ServiceID = s.ServiceID 
 	where ClientId = '$_POST[ClientId]'";
 	
 	$consulta = DBQ($sql);
+	
+	$totalD = 0;
+	$totalR = 0;
 	echo '<table>';
-			echo "	<tr>
+			echo "	<thead><tr>
 					<th>#</th>
 					<th>Item</th>
 					<th>Descrição</th>
 					<th>Valor</th>
 					<th>Vencimento</th>
 					<th>Pago?</th>
-				</tr>";
+				</tr></thead>
+				<tbody>";
 	foreach($consulta as $u){
-
+		
+		// Soma o total de receitas e também o total de despesas
+		if($u[FlowPrice]){
+			$totalD += 0;
+		}else{
+			$totalR += 0;
+		}
 		
 		echo "	<tr>
 					<td>$u[ServiceId]</td>
@@ -344,7 +359,11 @@ if($_POST[metodo] == 'getServClient'){
 					<td>".date( "d-m-Y", strtotime( $u[FlowDate] ) )."</td>
 				</tr>";
 	}
-	echo '</table>';
+	echo '<tfoot>
+		
+		</tfoot>
+		    </tbody>
+			</table>';
 
 }
 
