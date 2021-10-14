@@ -213,3 +213,6 @@ $(document).on('change', '#upload', function(){
 	ctx.readAsDataURL(file);
 });
 
+$(document).on('click', '.nono', function(){
+	M.toast({html: "Ainda não é possível...", classes: 'rounded'});
+});

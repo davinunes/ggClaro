@@ -1,6 +1,7 @@
 <?php
 include "database.php";
 validar();
+$_SESSION[page] = "usuarios.php";
 getUsuarios();
 
 

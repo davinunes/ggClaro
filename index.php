@@ -65,16 +65,19 @@
 <div  class="">
 
 	<div id="conteudo" class="hoverable conteudo card-panel white">
-		<div class="container">
+		
 			<div>
 <?php			
-			
-		echo "Olá $_SESSION[UserName]";	
+		if(isset($_SESSION[page])){
+			include $_SESSION[page];
+		}else{
+			echo "Olá $_SESSION[UserName]";
+		}
 			
 ?>		
 			</div>
 
-		</div>
+		
 	</div>
 
 </div>

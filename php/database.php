@@ -91,8 +91,8 @@ function getUsuarios(){ # Executa um Comando na Conexão
 							form='#formUser'
 
 						><i class='material-icons'>edit</i></a>
-						<a class='btn green senhaUser' UserId='$u[UserId]'><i class='material-icons'>phonelink_lock</i></a>
-						<a class='btn red removeUser' UserId='$u[UserId]'><i class='material-icons'>delete_forever</i></a>
+						
+						<a class='btn red removeUser' UserId='$u[UserId]'><i class='nono material-icons'>delete_forever</i></a>
 					</span>
 				</li>";
 	}
@@ -178,7 +178,7 @@ function getService(){ # Executa um Comando na Conexão
 							<i class='material-icons'>edit</i>
 						</a>
 						
-						<a class='btn red delService' ServiceId='$u[ServiceId]'><i class='material-icons'>delete_forever</i></a>
+						<a class='btn red delService' ServiceId='$u[ServiceId]'><i class='nono material-icons'>delete_forever</i></a>
 
 					</span>
 				</li>";
