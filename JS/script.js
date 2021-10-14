@@ -3,6 +3,9 @@ function moeda(){
 		myAudio.play();
 }
 onResize = function() {
+	/**
+		Verifica o tamanho da tela para ajustar a div que apresenta o conteúdo
+	**/
 	if($(window).width() > 992){
 		$("#conteudo").css("padding-left",160);
 	}else{
@@ -39,6 +42,8 @@ $(document).ready(function(){
 		menuWidth: 50,
 		edge:'left'
 	});
+	
+	$('.avatar').css('object-fit', 'cover');
 	
 	onResize();
 	
