@@ -5,7 +5,12 @@ getClientes();
 
 echo '<div id="servPorClient"></div>';
 
-echo "<a class='btn teal center modal-trigger' id='addUser' href='#cadastro'>Cadastrar Cliente</a>";
+echo "<a 
+			class='new btn teal center modal-trigger' 
+			id='addUser' 
+			form='#formClient'
+			href='#cadastro'
+		>Cadastrar Cliente</a>";
 
 
 ?>
