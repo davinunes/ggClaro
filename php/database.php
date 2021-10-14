@@ -60,6 +60,9 @@ function DBQ($query){ # Executa um Comando na Conexão
 }
 
 function validar(){
+	/**
+		Verifica se o usuário está logado
+	**/
 	session_start();
 	if(!isset($_SESSION[UserId])){
 		header("location: login.php");
@@ -67,7 +70,10 @@ function validar(){
 	}
 }
 
-function getUsuarios(){ # Executa um Comando na Conexão
+function getUsuarios(){ 
+	/**
+		Escreve uma lista com os usuários na tabela user
+	**/
 	$sql .= "select * from `user` u ";
 	
 	$consulta = DBQ($sql);
@@ -101,6 +107,9 @@ function getUsuarios(){ # Executa um Comando na Conexão
 }
 
 function getClientes(){ # Executa um Comando na Conexão
+	/**
+		Escreve uma lista com os clientes na tabela client
+	**/
 	$sql .= "select * from `client` c ";
 	
 	$consulta = DBQ($sql);
@@ -136,6 +145,9 @@ function getClientes(){ # Executa um Comando na Conexão
 }
 
 function getServiceList(){ # Executa um Comando na Conexão
+	/**
+		Pega os Serviços para preencher o select
+	**/
 	$sql .= "select * from `service` ";
 	
 	$consulta = DBQ($sql);
@@ -147,6 +159,9 @@ function getServiceList(){ # Executa um Comando na Conexão
 }
 
 function getService(){ # Executa um Comando na Conexão
+	/**
+		Escreve uma lista com os serviços na tabela service
+	**/
 	$sql .= "select * from `service` ";
 	
 	$consulta = DBQ($sql);
@@ -187,7 +202,19 @@ function getService(){ # Executa um Comando na Conexão
 
 }
 
+/**
+	Abaixo os métodos. Esta página é chamada via POST e retorna um html que deverá preencher alguma parte do código
+	A variável método define qual parte desde php vai rodar, podendo ser apresentadas mais variáveis
+**/
+
+
+
 if($_POST[metodo] == 'userAdd'){ # Executa um Comando na Conexão
+	
+	/**
+		Adiciona um usuário na tabela
+	**/
+	
 	$sql .= "	INSERT INTO `user`
 					(UserName, UserLogin, UserPassword)
 				VALUES
