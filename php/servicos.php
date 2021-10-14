@@ -28,7 +28,7 @@ echo " <a
           <label for="ServiceName" class="active">Nome do Serviço ou produto</label>
         </div>
         <div class="input-field col s12 m6">
-          <input id="ServiceDefVal" name="ServiceDefVal" placeholder="1.15" step=".01" pattern="^\d*(\.\d{0,2})?$" type="number" class="validate ">
+          <input id="ServiceDefVal" name="ServiceDefVal" placeholder="1.15" step=".01" pattern="^\d*(\.\d{0,2})?$" type="number" class="decimal validate ">
           <label for="ServiceDefVal" class="active">Preço de referência</label>
         </div>
 	  </div>
