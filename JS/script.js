@@ -187,10 +187,7 @@ $(document).on('keyup', '.somenteNumeros', function(){
 	$(this).val(this.value.replace(/\D/g, ''));
 });
 
-$(document).on('blur', '.decimal', function(){
-	$(this).val(this.value.replace(',','.'));
-	//this.value = parseFloat(this.value).toFixed(2);
-});
+
 
 $("#UserPasswordCheck").on("keyup", function (e) {
     if ($("#UserPassword").val() != $(this).val()) {
