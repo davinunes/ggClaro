@@ -345,10 +345,10 @@ if($_POST[metodo] == 'getServClient'){
 	foreach($consulta as $u){
 		
 		// Soma o total de receitas e também o total de despesas
-		if($u[FlowPrice]){
-			$totalD += 0;
+		if($u[FlowIn] == '0'){
+			$totalD += $u[FlowPrice];
 		}else{
-			$totalR += 0;
+			$totalR += $u[FlowPrice];
 		}
 		
 		echo "	<tr>
@@ -360,7 +360,8 @@ if($_POST[metodo] == 'getServClient'){
 				</tr>";
 	}
 	echo '<tfoot>
-		
+		<th>Total em aberto</th><td>$totalD</td>
+		<th>Total fechado</th><td>$totalR</td>
 		</tfoot>
 		    </tbody>
 			</table>';
