@@ -360,8 +360,12 @@ if($_POST[metodo] == 'getServClient'){
 				</tr>";
 	}
 	echo "<tfoot>
-		<th>Total em aberto</th><td>$totalD</td>
-		<th>Total fechado</th><td>$totalR</td>
+		<tr>
+			<th colspan='3'>Total em aberto</th><td>R$ $totalD</td>
+		</tr>
+		<tr>
+			<th colspan='3'>Total fechado</th><td>R$ $totalR</td>
+		</tr>
 		</tfoot>
 		    </tbody>
 			</table>";
