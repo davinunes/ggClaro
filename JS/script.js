@@ -187,6 +187,9 @@ $(document).on('keyup', '.somenteNumeros', function(){
 	$(this).val(this.value.replace(/\D/g, ''));
 });
 
+$(document).on('keyup', '.decimal', function(){
+	$(this).val(this.value.replace(',','.'));
+});
 
 $("#UserPasswordCheck").on("keyup", function (e) {
     if ($("#UserPassword").val() != $(this).val()) {
