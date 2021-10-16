@@ -36,6 +36,8 @@ echo "<a
           <input id="ClientZap" name="ClientZap" placeholder="5561999999999" type="text" class="validate somenteNumeros">
           <label for="ClientZap" class="active">WhatsApp no formato: 5561999999999</label>
         </div>
+</div>
+<div class="row">
         <div class="input-field col s12 m6 hide">
           <input id="ClientId" name="ClientId" placeholder="0" type="text" class="validate somenteNumeros" disabled>
           <label for="ClientId" class="active">Id Cliente</label>
