@@ -89,7 +89,7 @@ function getUsuarios(){
 					<span class='secondary-content'>
 						<a 
 							href='#cadastro' 
-							class='modal-trigger btn blue editGlobal' 
+							class='modal-trigger btn-small small blue editGlobal' 
 							UserId='$u[UserId]'
 							metodoGet='getUserJSON'
 							metodoSet='userSet'
@@ -98,7 +98,7 @@ function getUsuarios(){
 
 						><i class='material-icons'>edit</i></a>
 						
-						<a class='btn red removeUser' UserId='$u[UserId]'><i class='nono material-icons'>delete_forever</i></a>
+						<a class='btn-small small red removeUser' UserId='$u[UserId]'><i class='nono material-icons'>delete_forever</i></a>
 					</span>
 				</li>";
 	}
@@ -125,7 +125,7 @@ function getClientes(){ # Executa um Comando na Conexão
 					<span class='secondary-content'>
 						<a 
 							href='#cadastro'
-							class='modal-trigger btn blue editGlobal' 
+							class='modal-trigger btn-small small blue editGlobal' 
 							ClientId='$u[ClientId]'
 							metodoGet='getClientJSON'
 							metodoSet='clientSet'
@@ -134,8 +134,8 @@ function getClientes(){ # Executa um Comando na Conexão
 							
 						
 						><i class='material-icons'>edit</i></a>
-						<a class='btn orange getServClient' ClientId='$u[ClientId]'><i class='material-icons'>list</i></a>
-						<a href='#venda'class='modal-trigger btn green sellService' ClientName='$u[ClientName]' ClientId='$u[ClientId]'><i class='material-icons'>add_shopping_cart</i></a>
+						<a class='btn-small small orange getServClient' ClientId='$u[ClientId]'><i class='material-icons'>list</i></a>
+						<a href='#venda'class='modal-trigger btn-small small green sellService' ClientName='$u[ClientName]' ClientId='$u[ClientId]'><i class='material-icons'>add_shopping_cart</i></a>
 
 					</span>
 				</li>";
@@ -181,7 +181,7 @@ function getService(){ # Executa um Comando na Conexão
 					<span class='secondary-content'>
 						<a 
 							href='#cadastro' 
-							class='modal-trigger btn blue edit editGlobal'	
+							class='modal-trigger btn-small small blue edit editGlobal'	
 							form='#formService'	
 							ServiceId='$u[ServiceId]'
 							metodoGet='getServiceJSON'
@@ -193,7 +193,7 @@ function getService(){ # Executa um Comando na Conexão
 							<i class='material-icons'>edit</i>
 						</a>
 						
-						<a class='btn red delService' ServiceId='$u[ServiceId]'><i class='nono material-icons'>delete_forever</i></a>
+						<a class='btn-small red delete' ServiceId='$u[ServiceId]'><i class='nono material-icons'>delete_forever</i></a>
 
 					</span>
 				</li>";
