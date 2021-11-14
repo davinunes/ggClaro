@@ -40,6 +40,17 @@
 
 </head>
 
+ <style>
+    .load {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 30%;
+    left: 45%;
+    color: blue;
+ }
+</style>
+
 
 <body>
 <header>
@@ -71,6 +82,7 @@
 			
 
 			echo "Olá $_SESSION[UserName]";
+			
 
 			
 ?>		

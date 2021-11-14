@@ -2,6 +2,12 @@ function moeda(){
         var myAudio = new Audio('moeda.mp3');
 		myAudio.play();
 }
+
+function loader(){
+	$('#conteudo').html('<div class="center"><img src="load.gif"></img></div>');
+}
+
+
 onResize = function() {
 	/**
 		Verifica o tamanho da tela para ajustar a div que apresenta o conteúdo
@@ -62,6 +68,7 @@ $(document).ready(function(){
 			pagina = "php/"+$(this).attr("id")+".php";
 		}
 		console.log(pagina);
+		loader();
 		
 		$.post(pagina, "", function(retorna){
 			$("#conteudo").html(retorna);
