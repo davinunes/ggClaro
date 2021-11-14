@@ -49,7 +49,7 @@ $(document).ready(function(){
 		edge:'left'
 	});
 	
-	
+	$('.collapsible').collapsible();
 	onResize();
 	
 	$('.dropdown-trigger').dropdown({
@@ -74,6 +74,7 @@ $(document).ready(function(){
 			$("#conteudo").html(retorna);
 			// $('select').formSelect();
 			$('.modal').modal();
+			$('.collapsible').collapsible();
 			$('.circle').css('object-fit', 'cover'); //Ajusta Imagem dentro do avatar
 		});
 		
@@ -107,11 +108,30 @@ $(document).on('click', '.include', function(){
 });
 
 
-
+$(document).on('click', '.reexibeClientes', function(){
+	/**
+		Chama o script que retornará a lista de clientes que foi ocultada, alterando o nome do botão, e removendo o conteudo que foi exibido anteriormente
+	**/
+	$(this).removeClass('reexibeClientes').addClass('getServClient').children().text('list');
+	$('.collection li').removeClass('selecionado');
+	$(".collection li").show();
+	$('#servPorClient').html('');
+});
+	
 $(document).on('click', '.getServClient', function(){
 	/**
 		Chama o script que retornará a lista de produtos por cliente
-	**/		
+	**/
+	
+	// Removo o marcador de todos os itens
+	$('.collection li').removeClass('selecionado');
+	// Marco o item atual
+	let manter = $(this).parent().parent().addClass('selecionado');
+	// Escondo todos os demais
+	$(".collection li").not('.selecionado').hide();
+	// Agora substituo a função deste botão, para que reexiva o que estava oculto
+	$(this).removeClass('getServClient').addClass('reexibeClientes').children().text('update');
+	
 			var dados = {};
 			dados["metodo"] = "getServClient";
 			dados["ClientId"] =  $(this).attr("ClientId");
