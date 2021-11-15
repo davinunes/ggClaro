@@ -70,6 +70,7 @@
   <li><span class="brand-logo"><img width="100%" class="logo" src="logo/0004.png"></a></span></li>
   <li><a class="menu sidenav-close" id="clientes">Clientes</a></li>
   <li><a class="menu sidenav-close" id="servicos">Serviços</a></li>
+  <li><a class="menu sidenav-close" id="ultimasVendas">Vendas</a></li>
   <li><div class="divider"></div></li>
   <li><a class="menu sidenav-close" id="usuarios">Usuarios</a></li>
   <li><a class=" sidenav-close" href="php/logout.php">Sair</a></li>
