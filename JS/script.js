@@ -7,7 +7,6 @@ function loader(){
 	$('#conteudo').html('<div class="center"><img src="load.gif"></img></div>');
 }
 
-
 onResize = function() {
 	/**
 		Verifica o tamanho da tela para ajustar a div que apresenta o conteúdo
@@ -16,6 +15,7 @@ onResize = function() {
 		$("#conteudo").css("padding-left",160);
 	}else{
 		$("#conteudo").css("padding-left",24);
+		// $('.collection ').css("min-height",'fit-content');
 	}
 }
 
@@ -107,7 +107,6 @@ $(document).on('click', '.include', function(){
 
 });
 
-
 $(document).on('click', '.reexibeClientes', function(){
 	/**
 		Chama o script que retornará a lista de clientes que foi ocultada, alterando o nome do botão, e removendo o conteudo que foi exibido anteriormente
@@ -149,6 +148,7 @@ $(document).on('click', '.getServClient', function(){
 	});
 
 });
+
 $(document).on('click', '#github', function(){
 	/**
 		Chama o script que fará a atualização no GitHub
@@ -214,7 +214,59 @@ $(document).on('keyup', '.somenteNumeros', function(){
 	$(this).val(this.value.replace(/\D/g, ''));
 });
 
+$(document).on('click', '.removerVendaDoCliente', function(){
+	/**
+		Tem que ter esses atributos no link que carrega a classe editGlobal:
+		metodoGet='getServiceJSON'
+		metodoSet='serviceSet'
+		chave='ServiceId'
+	
+	**/
 
+  var dados = {};
+  dados['metodo'] = 'removerVendaDoCliente';
+  dados['item'] = $(this).attr('item');
+  dados['valor'] = $(this).attr('valor');
+  dados['ClientId'] = $(this).attr('ClientId');
+
+	let euQuero = confirm('Você vai deletar a venda numero '+dados.item+' no valor de R$ '+dados.valor+' do banco de dados. Esta ação é irreversível! Tem certeza?');
+	if(euQuero){
+		
+		// $(this).parent().html('<i class="material-icons">done_all</i>').parent().addClass('teal lighten-5');
+		$.post('php/database.php', dados, function(retorna){
+			$('#servPorClient').html(retorna);
+			M.toast({html: "Feito!!", classes: 'rounded'});
+		});
+	}
+});
+
+$(document).on('click', '.receberPagamentoDoCliente', function(){
+	/**
+		Tem que ter esses atributos no link que carrega a classe editGlobal:
+		metodoGet='getServiceJSON'
+		metodoSet='serviceSet'
+		chave='ServiceId'
+	
+	**/
+
+  var dados = {};
+  dados['metodo'] = 'receberPagamentoDoCliente';
+  dados['item'] = $(this).attr('item');
+  dados['valor'] = $(this).attr('valor');
+  dados['ClientId'] = $(this).attr('ClientId');
+
+	let euQuero = confirm('Você vai dar baixa na venda numero '+dados.item+' no valor de R$ '+dados.valor+' do banco de dados. Tem certeza?');
+	if(euQuero){
+		
+		// $(this).parent().html('<i class="material-icons">done_all</i>').parent().addClass('teal lighten-5');
+		$.post('php/database.php', dados, function(retorna){
+			$('#servPorClient').html(retorna);
+			M.toast({html: "Feito!!", classes: 'rounded'});
+		});
+	}
+
+
+});
 
 $("#UserPasswordCheck").on("keyup", function (e) {
     if ($("#UserPassword").val() != $(this).val()) {

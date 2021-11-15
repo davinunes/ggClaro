@@ -158,6 +158,73 @@ function getServiceList(){ # Executa um Comando na Conexão
 
 }
 
+function getClientServicelist($ClientId){
+		
+	/**
+		Escreve uma tabela, com os serviços na lançados para determinado cliente
+	**/
+	
+	$sql .= "select f.*, s.ServiceName from `flow` f 
+	left join service s on f.ServiceID = s.ServiceID 
+	where ClientId = '$ClientId'";
+	
+	$consulta = DBQ($sql);
+	if($consulta){
+			$totalD = 0;
+			$totalR = 0;
+			echo '<table>';
+					echo "	<thead><tr>
+								<th>#</th>
+								<th>Item</th>
+								
+								<th>Data</th>
+								<th>Valor</th>
+								<th>Ação</th>
+							</tr>
+						</thead>
+						<tbody>";
+			foreach($consulta as $u){
+				
+				// Soma o total de receitas e também o total de despesas
+				if($u[FlowIn] == '1'){
+					$totalR += $u[FlowPrice];
+					$icone = '<i class="material-icons">done_all</i>';
+					$cor = 'teal lighten-5';
+
+				}else{
+					$totalD += $u[FlowPrice];
+					$icone = '';
+					$icone .= '<a ClientId="'.$ClientId.'" valor="'.$u[FlowPrice].'" item="'.$u[FlowId].'" class="btn-small waves-effect waves-light teal receberPagamentoDoCliente"><i class="material-icons">done_all</i></a> ';
+					$icone .= '<a ClientId="'.$ClientId.'" valor="'.$u[FlowPrice].'" item="'.$u[FlowId].'" class="btn-small waves-effect waves-light red removerVendaDoCliente"><i class="material-icons">delete_forever</i></a> ';
+					$cor = '';
+				}
+				echo "	<tr class='$cor'>
+							<td>$u[FlowId]</td>
+							<td class='title' title='$u[FlowDesc]'>$u[ServiceName]</td>
+							
+							<td>".date( "d-m-Y", strtotime( $u[FlowDate] ) )."</td>
+							<td>R$ $u[FlowPrice]</td>
+							<td>
+								$icone
+							</td>
+						</tr>";
+			}
+			echo "	<tfoot class='purple lighten-5'>
+						<tr>
+							<th colspan='2'>Total a receber</th><td>R$ $totalD</td>
+							<th colspan='1'>Total recebido</th><td>R$ $totalR</td>
+						</tr>
+					</tfoot>
+				</tbody>
+				</table>";
+		
+		
+	}else{
+		echo "<p>Não há anotações para este cliente!</p>";
+	}
+
+}
+
 function getService(){ # Executa um Comando na Conexão
 	/**
 		Escreve uma lista com os serviços na tabela service
@@ -207,7 +274,31 @@ function getService(){ # Executa um Comando na Conexão
 	A variável método define qual parte desde php vai rodar, podendo ser apresentadas mais variáveis
 **/
 
+if($_POST[metodo] == 'removerVendaDoCliente'){ # Executa um Comando na Conexão
+	$sql .= "	delete from `flow` 
+					WHERE 
+						FlowId = $_POST[item] ";
+	// echo $sql;
+	if(DBExecute($sql)){
+		getClientServicelist($_POST[ClientId]); 
+	}else{
+		echo "erro";
+	}
+}
 
+if($_POST[metodo] == 'receberPagamentoDoCliente'){ # Executa um Comando na Conexão
+	$sql .= "	UPDATE `flow` 
+					SET 
+						FlowIn = '1' 
+					WHERE 
+						FlowId = $_POST[item] ";
+	// echo $sql;
+	if(DBExecute($sql)){
+		getClientServicelist($_POST[ClientId]); 
+	}else{
+		echo "erro";
+	}
+}
 
 if($_POST[metodo] == 'userAdd'){ # Executa um Comando na Conexão
 	
@@ -319,69 +410,7 @@ if($_POST[metodo] == 'clientSet'){
 }
 
 if($_POST[metodo] == 'getServClient'){
-	
-	/**
-		Escreve uma tabela, com os serviços na lançados para determinado cliente
-	**/
-	
-	$sql .= "select f.*, s.ServiceName from `flow` f 
-	left join service s on f.ServiceID = s.ServiceID 
-	where ClientId = '$_POST[ClientId]'";
-	
-	$consulta = DBQ($sql);
-	
-	$totalD = 0;
-	$totalR = 0;
-	echo '<table>';
-			echo "	<thead><tr>
-					<th>#</th>
-					<th>Item</th>
-					<th>Descrição</th>
-					<th>Valor</th>
-					<th>Vencimento</th>
-					<th>Pago</th>
-				</tr></thead>
-				<tbody>";
-	foreach($consulta as $u){
-		
-		// Soma o total de receitas e também o total de despesas
-		if($u[FlowIn] == '1'){
-			$totalR += $u[FlowPrice];
-			$icone = '<i class="material-icons">done_all</i>';
-			$cor = 'teal lighten-5';
-
-			echo "	<tr class='$cor'>
-					<td colspan='4'>Pagamento Recebido</td>
-					<td>".date( "d-m-Y", strtotime( $u[FlowDate] ) )."</td>
-					<td>R$ $u[FlowPrice]</td>
-				</tr>";
-		}else{
-			$totalD += $u[FlowPrice];
-			$icone = '';
-			$cor = '';
-
-			echo "	<tr class='$cor'>
-					<td>$u[ServiceId]</td>
-					<td>$u[ServiceName]</td>
-					<td>$u[FlowDesc]</td>
-					<td>".date( "d-m-Y", strtotime( $u[FlowDate] ) )."</td>
-					<td>R$ $u[FlowPrice]</td>
-				</tr>";
-		}
-		
-		
-	}
-	echo "<tfoot>
-		<tr>
-			<th colspan='3'>Total em aberto</th><td>R$ $totalD</td>
-		</tr>
-		<tr>
-			<th colspan='3'>Total fechado</th><td>R$ $totalR</td>
-		</tr>
-		</tfoot>
-		    </tbody>
-			</table>";
-
+	getClientServicelist($_POST[ClientId]);
 }
 
 if($_POST[metodo] == 'getServiceJSON'){

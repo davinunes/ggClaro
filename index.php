@@ -49,6 +49,10 @@
     left: 45%;
     color: blue;
  }
+ 
+	table td{
+		padding: 2px!important;
+	}
 </style>
 
 
